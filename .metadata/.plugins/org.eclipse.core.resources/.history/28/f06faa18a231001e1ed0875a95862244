@@ -1,0 +1,137 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+public class Conversor extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtCantidad;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Conversor frame = new Conversor();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Conversor() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Conversor");
+		lblNewLabel.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		lblNewLabel.setBounds(184, 24, 75, 14);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				regresa();
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(Conversor.class.getResource("/img/flecha-hacia-atras (1).png")));
+		btnNewButton.setBounds(10, 11, 40, 40);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cantidad");
+		lblNewLabel_1.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		lblNewLabel_1.setBounds(107, 108, 60, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setBounds(184, 104, 86, 20);
+		contentPane.add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("De: ");
+		lblNewLabel_2.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		lblNewLabel_2.setBounds(48, 75, 46, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JComboBox divisa1 = new JComboBox();
+		divisa1.setModel(new DefaultComboBoxModel(new String[] {"", "Peso Mexicano", "Dolar", "Euro", "Yen Japones"}));
+		divisa1.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		divisa1.setBounds(83, 71, 102, 22);
+		contentPane.add(divisa1);
+		
+		JComboBox divisa2 = new JComboBox();
+		divisa2.setModel(new DefaultComboBoxModel(new String[] {"", "Peso Mexicano", "Dolar", "Euro", "Yen Japones"}));
+		divisa2.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		divisa2.setBounds(262, 71, 102, 22);
+		contentPane.add(divisa2);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("a");
+		lblNewLabel_2_1.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		lblNewLabel_2_1.setBounds(213, 75, 33, 14);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JLabel labelResult = new JLabel("");
+		labelResult.setFont(new Font("Lucida Console", Font.PLAIN, 13));
+		labelResult.setBounds(184, 197, 86, 14);
+		contentPane.add(labelResult);
+		
+		JButton btnNewButton_1 = new JButton("Convertir");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			double resultado= 0; 
+			double divisaD = Double.parseDouble(txtCantidad.getText());
+			String primer = divisa1.getSelectedItem().toString();
+			String segundo = divisa2.getSelectedItem().toString();
+			
+			if(primer=="Peso Mexicano" && segundo=="Dolar"){
+				resultado= divisaD*0.058820753;	
+			}
+			
+			String resul = String.valueOf((double)Math.round(resultado *Math.pow(10,3 ))/Math.pow(10,3));
+			//
+			
+			
+			labelResult.setText(resul);
+			
+			
+			}
+			
+		});
+		btnNewButton_1.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		btnNewButton_1.setBounds(170, 149, 109, 23);
+		contentPane.add(btnNewButton_1);
+	}
+	
+	void regresa () {
+		Inicio ini = new Inicio();
+		
+		ini.setVisible(true);
+		this.setVisible(false);
+		
+	}
+}

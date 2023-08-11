@@ -1,0 +1,116 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.border.LineBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.Rectangle;
+import java.awt.Cursor;
+
+public class Inicio extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Inicio frame = new Inicio();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Inicio() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = 
+				new JPanel();
+		contentPane.setBackground(new Color(250, 214, 235));
+		contentPane.setBorder(null);
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Qué desea realizar? ");
+		lblNewLabel.setBackground(new Color(64, 0, 64));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 17));
+		lblNewLabel.setBounds(122, 11, 220, 25);
+		contentPane.add(lblNewLabel);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setBackground(new Color(255, 255, 255));
+		toolBar.setMaximumSize(new Dimension(20, 2));
+		toolBar.setPreferredSize(new Dimension(20, 2));
+		toolBar.setFloatable(false);
+		toolBar.setBounds(34, 48, 361, 36);
+		contentPane.add(toolBar);
+		
+		JButton btnNewButton = new JButton("Conversor de divisas");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(164, 92, 185));
+		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/img/monedas.png")));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventanaConversor();	
+			}
+		});
+		toolBar.add(btnNewButton);
+		
+		JButton btnOtro = new JButton("Conversor de temperatura");
+		btnOtro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnOtro.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnOtro.setForeground(new Color(255, 255, 255));
+		btnOtro.setBackground(new Color(164, 92, 185));
+		btnOtro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventanaTemperatura();
+			}
+		});
+		btnOtro.setIcon(new ImageIcon(Inicio.class.getResource("/img/termo (1).png")));
+		toolBar.add(btnOtro);
+	}
+	
+	void ventanaConversor () {
+		Conversor con = new Conversor();
+		
+		con.setVisible(true);
+		con.setLocationRelativeTo(null);
+		this.setVisible(false);
+	}
+	void ventanaTemperatura() {
+		Temperatura ten = new Temperatura();
+		ten.setVisible(true);
+		ten.setLocationRelativeTo(null);
+		this.setVisible(false);
+	}
+}

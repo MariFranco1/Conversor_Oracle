@@ -1,0 +1,85 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.border.LineBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.Rectangle;
+import java.awt.Cursor;
+import java.awt.ComponentOrientation;
+
+public class Inicio extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Inicio frame = new Inicio();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Inicio() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = 
+				new JPanel();
+		contentPane.setBackground(new Color(250, 214, 235));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 0, true));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Qué desea realizar? ");
+		lblNewLabel.setBackground(new Color(64, 0, 64));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 17));
+		lblNewLabel.setBounds(122, 11, 220, 25);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnMonedas = new JButton("Convertidor de divisas");
+		btnMonedas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventanaConversorMonedas();
+			}
+		});
+		btnMonedas.setBounds(38, 47, 139, 23);
+		contentPane.add(btnMonedas);
+	}
+	
+	
+	void ventanaConversorMonedas() {
+		Conversor con = new Conversor();
+		con.setVisible(true);
+		this.setVisible(false);
+	}
+}

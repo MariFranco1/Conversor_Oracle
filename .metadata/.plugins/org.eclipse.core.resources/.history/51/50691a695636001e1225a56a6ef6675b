@@ -1,0 +1,97 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+
+public class Inicio extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Inicio frame = new Inicio();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Inicio() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = 
+				new JPanel();
+		contentPane.setBackground(new Color(224, 193, 255));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Qué deseas realizar? ");
+		lblNewLabel.setBounds(153, 11, 174, 14);
+		contentPane.add(lblNewLabel);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setMaximumSize(new Dimension(20, 2));
+		toolBar.setPreferredSize(new Dimension(20, 2));
+		toolBar.setFloatable(false);
+		toolBar.setBounds(10, 47, 414, 29);
+		contentPane.add(toolBar);
+		
+		JButton btnNewButton = new JButton("Conversor de divisas");
+		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/img/monedas.png")));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventanaConversor();	
+			}
+		});
+		toolBar.add(btnNewButton);
+		
+		JButton btnOtro = new JButton("Conversor de temperatura");
+		btnOtro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventanaTemperatura();
+			}
+		});
+		btnOtro.setIcon(new ImageIcon(Inicio.class.getResource("/img/termo (1).png")));
+		toolBar.add(btnOtro);
+	}
+	
+	void ventanaConversor () {
+		Conversor con = new Conversor();
+		
+		con.setVisible(true);
+		con.setLocationRelativeTo(null);
+		this.setVisible(false);
+	}
+	void ventanaTemperatura() {
+		Temperatura ten = new Temperatura();
+		ten.setVisible(true);
+		ten.setLocationRelativeTo(null);
+		this.setVisible(false);
+	}
+}

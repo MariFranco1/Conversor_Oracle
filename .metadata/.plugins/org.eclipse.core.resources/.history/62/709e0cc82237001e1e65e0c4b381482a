@@ -1,0 +1,179 @@
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Cursor;
+
+public class Conversor extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtCantidad;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Conversor frame = new Conversor();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Conversor() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(250, 214, 235));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Conversor");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Lucida Console", Font.PLAIN, 14));
+		lblNewLabel.setBounds(10, 11, 414, 33);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton.setBackground(new Color(250, 214, 235));
+		btnNewButton.setBorder(null);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				regresa();
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(Conversor.class.getResource("/img/flecha (1).png")));
+		btnNewButton.setBounds(10, 11, 46, 40);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cantidad");
+		lblNewLabel_1.setFont(new Font("Lucida Console", Font.PLAIN, 12));
+		lblNewLabel_1.setBounds(93, 116, 70, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setBounds(173, 112, 86, 20);
+		contentPane.add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("De: ");
+		lblNewLabel_2.setFont(new Font("Lucida Console", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(27, 75, 46, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JComboBox divisa1 = new JComboBox();
+		divisa1.setAutoscrolls(true);
+		divisa1.setBackground(new Color(255, 255, 255));
+		divisa1.setModel(new DefaultComboBoxModel(new String[] {"", "Peso Mexicano", "Dolar", "Euro", "Yen Japones"}));
+		divisa1.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		divisa1.setBounds(53, 71, 150, 22);
+		contentPane.add(divisa1);
+		
+		JComboBox divisa2 = new JComboBox();
+		divisa2.setModel(new DefaultComboBoxModel(new String[] {"", "Peso Mexicano", "Dolar", "Euro", "Yen Japones"}));
+		divisa2.setFont(new Font("Lucida Console", Font.PLAIN, 11));
+		divisa2.setBounds(258, 71, 150, 22);
+		contentPane.add(divisa2);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("a");
+		lblNewLabel_2_1.setFont(new Font("Lucida Console", Font.PLAIN, 12));
+		lblNewLabel_2_1.setBounds(226, 75, 33, 14);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JLabel labelResult = new JLabel("");
+		labelResult.setHorizontalAlignment(SwingConstants.CENTER);
+		labelResult.setFont(new Font("Lucida Console", Font.PLAIN, 13));
+		labelResult.setBounds(10, 197, 414, 14);
+		contentPane.add(labelResult);
+		
+		JButton btnNewButton_1 = new JButton("Convertir");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(164, 92, 185));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			double resultado= 0; 
+			double divisaD = Double.parseDouble(txtCantidad.getText());
+			String primer = divisa1.getSelectedItem().toString();
+			String segundo = divisa2.getSelectedItem().toString();
+			String resul;
+			
+			if(primer=="Peso Mexicano" && segundo=="Dolar"){
+				resultado= divisaD*0.058820753;	
+			}if(primer=="Peso Mexicano" && segundo=="Euro" ) {
+				resultado= divisaD*0.05374;
+			}if(primer=="Peso Mexicano" && segundo=="Yen Japones") {
+				resultado= divisaD*8.4283204;
+			}if(primer=="Dolar" && segundo=="Peso Mexicano"){
+				resultado= divisaD*17.335558;	
+			}if(primer=="Dolar" && segundo=="Euro" ) {
+				resultado= divisaD*0.91375;
+			}if(primer=="Dolar" && segundo=="Yen Japones") {
+				resultado= divisaD*142.58500;
+			}if(primer=="Euro" && segundo=="Peso Mexicano"){
+				resultado= divisaD*18.98150;	
+			}if(primer=="Euro" && segundo=="Dolar" ) {
+				resultado= divisaD*1.09460;
+			}if(primer=="Euro" && segundo=="Yen Japones") {
+				resultado= divisaD*156.08000;
+			}if(primer=="Yen Japones" && segundo=="Peso Mexicano"){
+				resultado= divisaD*0.12161;	
+			}if(primer=="Yen Japones" && segundo=="Dolar" ) {
+				resultado= divisaD*0.00701;
+			}if(primer=="Yen Japones" && segundo=="Euro") {
+				resultado= divisaD*0.00641;
+			}else if(primer==segundo && segundo==primer){
+				JOptionPane.showMessageDialog(null, "Favor de seleccionar una divisa correcta");
+			}
+			
+			resul = String.valueOf((double)Math.round(resultado *Math.pow(10,2 ))/Math.pow(10,2));
+			
+			labelResult.setText(resul);
+			
+			
+			}
+			
+		});
+		btnNewButton_1.setBorder(new RoundedBorder(20));
+		btnNewButton_1.setFont(new Font("Lucida Console", Font.PLAIN, 13));
+		btnNewButton_1.setBounds(152, 152, 138, 23);
+		contentPane.add(btnNewButton_1);
+	}
+	
+	void regresa () {
+		Inicio ini = new Inicio();
+		
+		ini.setVisible(true);
+		ini.setLocationRelativeTo(null);
+		this.setVisible(false);
+		
+	}
+}

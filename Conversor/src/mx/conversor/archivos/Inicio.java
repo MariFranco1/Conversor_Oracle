@@ -1,0 +1,131 @@
+package mx.conversor.archivos;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.border.LineBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
+
+import java.awt.Rectangle;
+import java.awt.Cursor;
+import java.awt.ComponentOrientation;
+import java.awt.Insets;
+import javax.swing.JTextArea;
+
+public class Inicio extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Inicio frame = new Inicio();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Inicio() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = 
+				new JPanel();
+		contentPane.setBackground(new Color(250, 214, 235));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 0, true));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Qué conversión desea realizar? ");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBackground(new Color(64, 0, 64));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 17));
+		lblNewLabel.setBounds(10, 11, 414, 25);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnMonedas = new JButton("Divisas");
+		btnMonedas.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 14));
+		btnMonedas.setForeground(new Color(255, 255, 255));
+		btnMonedas.setBackground(new Color(164, 92, 185));
+		btnMonedas.setMargin(new Insets(2, 5, 2, 14));
+		btnMonedas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnMonedas.setIcon(new ImageIcon(Inicio.class.getResource("/img/dinero (1).png")));
+		btnMonedas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventanaConversorMonedas();
+			}
+		});
+		btnMonedas.setBorder(new RoundedBorder(20)); 
+		
+		btnMonedas.setBounds(10, 47, 196, 29);
+		contentPane.add(btnMonedas);
+		
+		JButton btnTemperatura = new JButton("Temperatura");
+		btnTemperatura.setForeground(new Color(255, 255, 255));
+		btnTemperatura.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 14));
+		btnTemperatura.setBackground(new Color(164, 92, 185));
+		btnTemperatura.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnTemperatura.setIcon(new ImageIcon(Inicio.class.getResource("/img/termo (2).png")));
+		btnTemperatura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ventanaTemperatura();
+			}
+		});
+		btnTemperatura.setBorder(new RoundedBorder(20)); 
+		
+		btnTemperatura.setBounds(216, 47, 208, 29);
+		contentPane.add(btnTemperatura);
+		
+		JTextArea txtrBienvenidoAlSegundo = new JTextArea();
+		txtrBienvenidoAlSegundo.setFont(new Font("Monospaced", Font.PLAIN, 14));
+		txtrBienvenidoAlSegundo.setForeground(new Color(0, 0, 0));
+		txtrBienvenidoAlSegundo.setBackground(new Color(250, 214, 235));
+		txtrBienvenidoAlSegundo.setWrapStyleWord(true);
+		txtrBienvenidoAlSegundo.setText("Bienvenido al segundo desafio de la formación Oracle\r\nNext Education.\r\nPrimer desafio de la especialización Back-End. \r\n\r\n\"Conversor de divisas\"\r\n\r\n\r\nDesarrollado por: Mariana Franco Sánchez");
+		txtrBienvenidoAlSegundo.setBounds(10, 107, 414, 143);
+		contentPane.add(txtrBienvenidoAlSegundo);
+	}
+	
+	
+	void ventanaConversorMonedas() {
+		Conversor con = new Conversor();
+		con.setVisible(true);
+		con.setLocationRelativeTo(null);
+		this.setVisible(false);
+	}
+	void ventanaTemperatura() {
+		Temperatura ten = new Temperatura();
+		ten.setVisible(true);
+		ten.setLocationRelativeTo(null);
+		this.setVisible(false);
+	}
+}
