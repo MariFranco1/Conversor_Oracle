@@ -1,10 +1,11 @@
 
 
-<h3> Hola este Mini proyecto de un supermercado., Tiene La finalidad de nutrir y practicar nuestra lógica en Java </h3>
-
-![giphy](https://github.com/jorge040/Super-mercado/assets/46494068/f3e682bf-da40-4d96-8cda-e53b6c5c2f3b)
+<h3> Hola, este es el primer desafio de la espeacialización BackEnd en Oracle Next Education. Tiene La finalidad de nutrir y practicar nuestra lógica en Java </h3>
 
 
-Te dejamos los links de nuestos perfiles de emplea One:
-<br> https://app.aluracursos.com/emprega-one/profile/cuellarrazojorgeivan
+![conversor](https://github.com/MariFranco1/Conversor_Oracle/assets/112605433/8b7892ac-12d3-4faf-a748-94e7e658a4c1)
+
+
+Dejo aqui el link de mi perfil de Emplea One
+
 <br> https://app.aluracursos.com/emprega-one/profile/mariana70-fs
